@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,JS-Object," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Bling" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="理解Object.defineProperty的作用">
+<meta name="keywords" content="javaScript,JS-Object">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Object.defineProperty的作用">
+<meta property="og:url" content="http://yoursite.com/2018/02/24/理解Object-defineProperty的作用/index.html">
+<meta property="og:site_name" content="Bling">
+<meta property="og:description" content="理解Object.defineProperty的作用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-30T04:42:37.607Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解Object.defineProperty的作用">
+<meta name="twitter:description" content="理解Object.defineProperty的作用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/24/理解Object-defineProperty的作用/"/>
+
+
+
+
+
+  <title>理解Object.defineProperty的作用 | Bling</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Monster's bling</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/理解Object-defineProperty的作用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Monster">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解Object.defineProperty的作用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T18:49:30+08:00">
+                2018-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">javaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  理解Object.defineProperty的作用
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="理解Object-defineProperty的作用"><a href="#理解Object-defineProperty的作用" class="headerlink" title="理解Object.defineProperty的作用"></a>理解Object.defineProperty的作用</h1><ul>
+<li>对象是由多个名/值对组成的无序的集合。对象中每个属性对应任意类型的值。</li>
+<li><p>定义对象可以使用构造函数或字面量的形式：</p>
+<pre><code>var obj = new Object;  //obj = {}
+obj.name = &quot;张三&quot;;  //添加描述
+obj.say = function(){};  //添加行为
+</code></pre><p>除了以上添加属性的方式，还可以使用Object.defineProperty定义新属性或修改原有的属性。</p>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>Object.defineProperty()<br>语法：</p>
+<p>Object.defineProperty(obj, prop, descriptor)<br>参数说明：</p>
+</blockquote>
+<ul>
+<li>obj：必需。目标对象</li>
+<li>prop：必需。需定义或修改的属性的名字</li>
+<li><p>descriptor：必需。目标属性所拥有的特性<br>返回值：</p>
+</li>
+<li><p>传入函数的对象。即第一个参数obj<br>针对属性，我们可以给这个属性设置一些特性，比如是否只读不可以写；是否可以被for..in或Object.keys()遍历。</p>
+</li>
+<li><p>给对象的属性添加特性描述，目前提供两种形式：数据描述和存取器描述。</p>
+</li>
+<li><p>数据描述<br>当修改或定义对象的某个属性的时候，给这个属性添加一些特性：</p>
+<pre><code>var obj = {
+    test:&quot;hello&quot;
+}
+//对象已有的属性添加特性描述
+Object.defineProperty(obj,&quot;test&quot;,{
+    configurable:true | false,
+    enumerable:true | false,
+    value:任意类型的值,
+    writable:true | false
+});
+//对象新添加的属性的特性描述
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    configurable:true | false,
+    enumerable:true | false,
+    value:任意类型的值,
+    writable:true | false
+});
+</code></pre></li>
+<li><p>数据描述中的属性都是可选的，来看一下设置每一个属性的作用。</p>
+</li>
+</ul>
+<h2 id="value"><a href="#value" class="headerlink" title="value"></a>value</h2><ul>
+<li><p>属性对应的值,可以使任意类型的值，默认为undefined</p>
+<pre><code>var obj = {}
+//第一种情况：不设置value属性
+Object.defineProperty(obj,&quot;newKey&quot;,{
+
+});
+console.log( obj.newKey );  //undefined
+------------------------------
+//第二种情况：设置value属性
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;
+});
+console.log( obj.newKey );  //hello
+writable
+</code></pre></li>
+</ul>
+<h2 id="属性的值是否可以被重写。"><a href="#属性的值是否可以被重写。" class="headerlink" title="属性的值是否可以被重写。"></a>属性的值是否可以被重写。</h2><ul>
+<li><p>设置为true可以被重写；设置为false，不能被重写。默认为false。</p>
+<pre><code>var obj = {}
+//第一种情况：writable设置为false，不能重写。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false
+});
+//更改newKey的值
+obj.newKey = &quot;change value&quot;;
+console.log( obj.newKey );  //hello
+
+//第二种情况：writable设置为true，可以重写
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:true
+});
+//更改newKey的值
+obj.newKey = &quot;change value&quot;;
+console.log( obj.newKey );  //change value
+enumerable
+</code></pre></li>
+<li><p>此属性是否可以被枚举（使用for…in或Object.keys()）。</p>
+</li>
+<li><p>设置为true可以被枚举；设置为false，不能被枚举。默认为false。</p>
+<pre><code>var obj = {}
+//第一种情况：enumerable设置为false，不能被枚举。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false,
+    enumerable:false
+});
+
+//枚举对象的属性
+for( var attr in obj ){
+    console.log( attr );
+}
+//第二种情况：enumerable设置为true，可以被枚举。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false,
+    enumerable:true
+});
+
+//枚举对象的属性
+for( var attr in obj ){
+    console.log( attr );  //newKey
+}
+</code></pre></li>
+</ul>
+<h2 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h2><ul>
+<li>是否可以删除目标属性或是否可以再次修改属性的特性（writable, configurable, enumerable）。</li>
+<li>设置为true可以被删除或可以重新设置特性；</li>
+<li>设置为false，不能被可以被删除或不可以重新设置特性。默认为false。</li>
+</ul>
+<p><strong>这个属性起到两个作用：</strong></p>
+<p>目标属性是否可以使用delete删除<br>目标属性是否可以再次设置特性</p>
+<pre><code>//-----------------测试目标属性是否能被删除------------------------
+var obj = {}
+//第一种情况：configurable设置为false，不能被删除。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false,
+    enumerable:false,
+    configurable:false
+});
+//删除属性
+delete obj.newKey;
+console.log( obj.newKey ); //hello
+
+//第二种情况：configurable设置为true，可以被删除。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false,
+    enumerable:false,
+    configurable:true
+});
+//删除属性
+delete obj.newKey;
+console.log( obj.newKey ); //undefined
+
+//-----------------测试是否可以再次修改特性------------------------
+var obj = {}
+//第一种情况：configurable设置为false，不能再次修改特性。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false,
+    enumerable:false,
+    configurable:false
+});
+
+//重新修改特性
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:true,
+    enumerable:true,
+    configurable:true
+});
+console.log( obj.newKey ); //报错：Uncaught TypeError: Cannot redefine property: newKey
+
+//第二种情况：configurable设置为true，可以再次修改特性。
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:false,
+    enumerable:false,
+    configurable:true
+});
+
+//重新修改特性
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    value:&quot;hello&quot;,
+    writable:true,
+    enumerable:true,
+    configurable:true
+});
+console.log( obj.newKey ); //hello
+除了可以给新定义的属性设置特性，也可以给已有的属性设置特性
+
+//定义对象的时候添加的属性，是可删除、可重写、可枚举的。
+var obj = {
+    test:&quot;hello&quot;
+}
+
+//改写值
+obj.test = &apos;change value&apos;;
+
+console.log( obj.test ); //&apos;change value&apos;
+
+Object.defineProperty(obj,&quot;test&quot;,{
+    writable:false
+})
+
+
+//再次改写值
+obj.test = &apos;change value again&apos;;
+
+console.log( obj.test ); //依然是：&apos;change value&apos;
+提示：一旦使用Object.defineProperty给对象添加属性，那么如果不设置属性的特性，那么configurable、enumerable、writable这些值都为默认的false
+
+var obj = {};
+//定义的新属性后，这个属性的特性中configurable，enumerable，writable都为默认的值false
+//这就导致了neykey这个是不能重写、不能枚举、不能再次设置特性
+//
+Object.defineProperty(obj,&apos;newKey&apos;,{
+
+});
+
+//设置值
+obj.newKey = &apos;hello&apos;;
+console.log(obj.newKey);  //undefined
+
+//枚举
+for( var attr in obj ){
+    console.log(attr);
+}
+</code></pre><h2 id="设置的特性总结："><a href="#设置的特性总结：" class="headerlink" title="设置的特性总结："></a>设置的特性总结：</h2><blockquote>
+<p>value: 设置属性的值</p>
+<p>writable: 值是否可以重写。true | false</p>
+<p>enumerable: 目标属性是否可以被枚举。true | false</p>
+<p>configurable: 目标属性是否可以被删除或是否可以再次修改特性 true | &gt; false</p>
+<p>存取器描述<br>当使用存取器描述属性的特性的时候，允许设置以下特性属性：</p>
+</blockquote>
+<pre><code>var obj = {};
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    get:function (){} | undefined,
+    set:function (value){} | undefined
+    configurable: true | false
+    enumerable: true | false
+});
+</code></pre><p><strong>注意：当使用了getter或setter方法，不允许使用writable和value这两个属性</strong></p>
+<h2 id="getter-setter"><a href="#getter-setter" class="headerlink" title="getter/setter"></a>getter/setter</h2><p>当设置或获取对象的某个属性的值的时候，可以提供getter/setter方法。</p>
+<p>getter 是一种获得属性值的方法<br>setter是一种设置属性值的方法。<br>在特性中使用get/set属性来定义对应的方法。</p>
+<pre><code>var obj = {};
+var initValue = &apos;hello&apos;;
+Object.defineProperty(obj,&quot;newKey&quot;,{
+    get:function (){
+        //当获取值的时候触发的函数
+        return initValue;
+    },
+    set:function (value){
+        //当设置值的时候触发的函数,设置的新值通过参数value拿到
+        initValue = value;
+    }
+});
+//获取值
+console.log( obj.newKey );  //hello
+
+//设置值
+obj.newKey = &apos;change value&apos;;
+
+console.log( obj.newKey ); //change value
+</code></pre><p><strong>注意：get或set不是必须成对出现，任写其一就可以。如果不设置方法，则get和set的默认值为undefined</strong></p>
+<p>configurable和enumerable同上面的用法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+            <a href="/tags/JS-Object/" rel="tag"># JS-Object</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/24/URL网址解析的好帮手/" rel="next" title="URL网址解析的好帮手">
+                <i class="fa fa-chevron-left"></i> URL网址解析的好帮手
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/24/WebStrom-快捷键/" rel="prev" title="WebStrom 快捷键">
+                WebStrom 快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Monster</p>
+              <p class="site-description motion-element" itemprop="description">Daily summary</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理解Object-defineProperty的作用"><span class="nav-number">1.</span> <span class="nav-text">理解Object.defineProperty的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#value"><span class="nav-number">1.1.</span> <span class="nav-text">value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的值是否可以被重写。"><span class="nav-number">1.2.</span> <span class="nav-text">属性的值是否可以被重写。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configurable"><span class="nav-number">1.3.</span> <span class="nav-text">configurable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置的特性总结："><span class="nav-number">1.4.</span> <span class="nav-text">设置的特性总结：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getter-setter"><span class="nav-number">1.5.</span> <span class="nav-text">getter/setter</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monster</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
