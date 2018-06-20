@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="shell," />
+  <meta name="keywords" content="NodeJS," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="linux 命令汇总">
-<meta name="keywords" content="shell">
+<meta name="description" content="NodeJS">
+<meta name="keywords" content="NodeJS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux shell">
-<meta property="og:url" content="http://yoursite.com/2018/01/23/Linux-shell/index.html">
+<meta property="og:title" content="NodeJS 读书笔记 第1章">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/index.html">
 <meta property="og:site_name" content="Bling">
-<meta property="og:description" content="linux 命令汇总">
+<meta property="og:description" content="NodeJS">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-30T04:42:37.605Z">
+<meta property="og:updated_time" content="2018-06-20T14:45:44.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux shell">
-<meta name="twitter:description" content="linux 命令汇总">
+<meta name="twitter:title" content="NodeJS 读书笔记 第1章">
+<meta name="twitter:description" content="NodeJS">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/23/Linux-shell/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/"/>
 
 
 
 
 
-  <title>Linux shell | Bling</title>
+  <title>NodeJS 读书笔记 第1章 | Bling</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/23/Linux-shell/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Monster">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux shell</h1>
+          <h1 class="post-title" itemprop="name headline">NodeJS 读书笔记 第1章</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T18:57:42+08:00">
-                2018-01-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T18:00:00+08:00">
+                2018-06-19
               </time>
             
 
@@ -285,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
                   </a>
                 </span>
 
@@ -309,7 +309,7 @@
 
           
               <div class="post-description">
-                  linux 命令汇总
+                  NodeJS
               </div>
           
 
@@ -326,33 +326,44 @@
       
 
       
-        <h2 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h2><h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf demo.txt</span><br></pre></td></tr></table></figure>
-<p><strong>-rf</strong>:强制删除并且不提醒</p>
-<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> [dirName]</span><br></pre></td></tr></table></figure>
-<p><strong>dirName</strong>：要切换的目标目录。</p>
-<h3 id="查看一个文件"><a href="#查看一个文件" class="headerlink" title="查看一个文件"></a>查看一个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat demo.txt</span><br></pre></td></tr></table></figure>
-<h3 id="触碰一个文件"><a href="#触碰一个文件" class="headerlink" title="触碰一个文件"></a>触碰一个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch demo.txt</span><br></pre></td></tr></table></figure>
-<p><strong>如果没有这个文件则新建</strong></p>
-<h3 id="新建一个文件夹"><a href="#新建一个文件夹" class="headerlink" title="新建一个文件夹"></a>新建一个文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir demo</span><br></pre></td></tr></table></figure>
-<h2 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h2><h3 id="登录服务器"><a href="#登录服务器" class="headerlink" title="登录服务器"></a>登录服务器</h3><p><strong>端口号</strong>: -P2222</p>
-<p><strong>username</strong>: root</p>
-<p><strong>IP</strong>: 47.94.238.16</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -P2222 root@47.94.238.16</span><br></pre></td></tr></table></figure>
-<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p>-A 　显示所有程序。 </p>
-<p>-e 　此参数的效果和指定”A”参数相同。</p>
-<p>-f 　显示<a href="https://www.baidu.com/s?wd=UID&amp;tn=67012150_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHcvrjTdrjb0T1Y1n16krjF9nHn3uhuBuynv0ZwV5fKWUMw85HmLnjDznHRsgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EPW6sPjmLPWR1njDsrjRsn1Tz" target="_blank" rel="noopener">UID</a>,PPIP,C与S<a href="https://www.baidu.com/s?wd=TIME&amp;tn=67012150_cpr&amp;fenlei=mv6quAkxTZn0IZRqIHcvrjTdrjb0T1Y1n16krjF9nHn3uhuBuynv0ZwV5fKWUMw85HmLnjDznHRsgvPsT6KdThsqpZwYTjCEQLGCpyw9Uz4Bmy-bIi4WUvYETgN-TLwGUv3EPW6sPjmLPWR1njDsrjRsn1Tz" target="_blank" rel="noopener">TIME</a>栏位。 </p>
-<p>grep命令是查找</p>
-<p>中间的|是管道命令</p>
-<p>是指ps命令与grep同时执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ps -ef | grep java</span><br></pre></td></tr></table></figure>
-<h3 id="杀掉进程"><a href="#杀掉进程" class="headerlink" title="杀掉进程"></a>杀掉进程</h3><blockquote>
-<p><strong>-9强制杀掉进程</strong></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">kill</span> -9 java_id</span><br></pre></td></tr></table></figure>
-<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><blockquote>
-<p><strong>-r</strong> 可以上传文件夹</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -p2222 -r demo.txt root@47.94.238.16:/usr/<span class="built_in">local</span>/tomcat/tomcat_api/webapps</span><br></pre></td></tr></table></figure>
+        <h1 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h1><p>在Node中，异步I/O很常见。以读取文件为例。我们可以看到它与前端Ajax调用的方式是极其类似的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件完成'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'发起读取文件'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发起读取文件</span></span><br><span class="line"><span class="comment">// 读取文件完成</span></span><br></pre></td></tr></table></figure>
+<p>这里’发起读取文件’，是在读取文件完成之前执行的，这就是一个典型的异步。</p>
+<p>在Node中，绝大多数的操作都以异步的方式进行调用。<a href="https://cn.linkedin.com/in/ryandahl01" title="Ryan dahl" target="_blank" rel="noopener">Ryan dahl</a>排除万难，在底层构建了很多异步I/O的API，<br>从文件读取到网络请求等，均是如此。这样做的意义是我们可以很自然的从语言层面进行并行I/O操作。每个调用之间<br>无需等待之前的I/O调用结束。在编程模型上可以极大提升效率。</p>
+<p>下面的两个文件读取任务的耗时取决于最慢的那个文件读取耗时。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件1完成'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件2完成'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>而同步I/O这两个文件的耗时是两个任务耗时之和。</p>
+<h1 id="事件与回掉函数"><a href="#事件与回掉函数" class="headerlink" title="事件与回掉函数"></a>事件与回掉函数</h1><h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>典型的通过事件来暴露接口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">var</span> querystring=<span class="built_in">require</span>(<span class="string">'querystring'</span>);</span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"request already come"</span>);</span><br><span class="line">    <span class="keyword">var</span> post = <span class="string">""</span>;</span><br><span class="line">    req.on(<span class="string">'data'</span>,(chunk)=&gt;&#123;</span><br><span class="line">        post += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line">    req.on(<span class="string">'end'</span>,()=&gt;&#123;</span><br><span class="line">        post =  querystring.parse(post);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'complete complished'</span>);</span><br><span class="line">        <span class="comment">//返回请求者一个信息</span></span><br><span class="line">        res.write(post.name);</span><br><span class="line">        res.end();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<p>事件编程优点：</p>
+<ul>
+<li>轻量级</li>
+<li>松耦合</li>
+<li>只关注事物点</li>
+</ul>
+<p>事件编程缺点：</p>
+<ul>
+<li>在多个异步场景中，事件与事件之间相互独立，如何协作是一个问题</li>
+</ul>
+<h2 id="回掉函数"><a href="#回掉函数" class="headerlink" title="回掉函数"></a>回掉函数</h2><p>从上面例子可以看到回掉函数是无处不在的。这是因为在javaScript中，我们把函数看作为第一等攻门来对待，可以将函数作为对象传递给方法作为实参进行调用。</p>
+<p>回掉函数优点：</p>
+<ul>
+<li>最好的接收异步调用返回数据的方法</li>
+</ul>
+<p>回掉函数缺点：</p>
+<ul>
+<li>易读性差（代码的编写顺序和执行顺序无关）</li>
+<li>在流程控制方面，因为穿插了异步方法和回掉函数，与常规的同步方式相比变得不是那么一目了然</li>
+</ul>
+<h1 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h1><p>Node保持了javaScript在浏览器中的单线程的特点。</p>
+<p>Node 单线程的弱点：</p>
+<ul>
+<li>无法利用多核 CPU</li>
+<li>错误会引起整个应用退出，应用的健壮性值得考验</li>
+<li>大量计算占用 CPU 导致无法继续调用异步 I/O</li>
+</ul>
+<p>Node 采用了 Web Workers 相同的思路来解决单线程过程中大计算量的问题： child_process。</p>
+<h1 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h1><p>Node 是基于libuv 实现跨平台的</p>
 
       
     </div>
@@ -370,7 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/shell/" rel="tag"># shell</a>
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
           
         </div>
       
@@ -383,15 +394,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/09/Vim/" rel="next" title="Vim">
+                <i class="fa fa-chevron-left"></i> Vim
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/29/cordova/" rel="prev" title="cordova">
-                cordova <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,7 +534,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#磁盘管理"><span class="nav-number">1.</span> <span class="nav-text">磁盘管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">1.1.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换目录"><span class="nav-number">1.2.</span> <span class="nav-text">切换目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看一个文件"><span class="nav-number">1.3.</span> <span class="nav-text">查看一个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触碰一个文件"><span class="nav-number">1.4.</span> <span class="nav-text">触碰一个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建一个文件夹"><span class="nav-number">1.5.</span> <span class="nav-text">新建一个文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器管理"><span class="nav-number">2.</span> <span class="nav-text">服务器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#登录服务器"><span class="nav-number">2.1.</span> <span class="nav-text">登录服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看进程"><span class="nav-number">2.2.</span> <span class="nav-text">查看进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#杀掉进程"><span class="nav-number">2.3.</span> <span class="nav-text">杀掉进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传文件"><span class="nav-number">2.4.</span> <span class="nav-text">上传文件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#异步I-O"><span class="nav-number">1.</span> <span class="nav-text">异步I/O</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件与回掉函数"><span class="nav-number">2.</span> <span class="nav-text">事件与回掉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">2.1.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回掉函数"><span class="nav-number">2.2.</span> <span class="nav-text">回掉函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单线程"><span class="nav-number">3.</span> <span class="nav-text">单线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跨平台"><span class="nav-number">4.</span> <span class="nav-text">跨平台</span></a></li></ol></div>
             
 
           </div>
