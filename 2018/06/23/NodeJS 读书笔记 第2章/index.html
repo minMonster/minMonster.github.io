@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="NodeJS">
+<meta name="description" content="模块机制">
 <meta name="keywords" content="NodeJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJS 读书笔记 第2章">
 <meta property="og:url" content="http://yoursite.com/2018/06/23/NodeJS 读书笔记 第2章/index.html">
 <meta property="og:site_name" content="Bling">
-<meta property="og:description" content="NodeJS">
+<meta property="og:description" content="模块机制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-23T15:39:20.023Z">
+<meta property="og:updated_time" content="2018-06-24T15:56:49.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NodeJS 读书笔记 第2章">
-<meta name="twitter:description" content="NodeJS">
+<meta name="twitter:description" content="模块机制">
 
 
 
@@ -309,7 +309,7 @@
 
           
               <div class="post-description">
-                  NodeJS
+                  模块机制
               </div>
           
 
@@ -326,7 +326,7 @@
       
 
       
-        <h1 id="模块机制"><a href="#模块机制" class="headerlink" title="模块机制"></a>模块机制</h1><h2 id="Node-js模块的实现"><a href="#Node-js模块的实现" class="headerlink" title="Node.js模块的实现"></a>Node.js模块的实现</h2><p>之前在网上查阅了许多介绍Node.js的文章，可惜对于Node.js的模块机制大都着墨不多。在后续介绍模块的使用之前，我认为有必要深入一下Node.js的模块机制。</p>
+        <h2 id="Node-js模块的实现"><a href="#Node-js模块的实现" class="headerlink" title="Node.js模块的实现"></a>Node.js模块的实现</h2><p>之前在网上查阅了许多介绍Node.js的文章，可惜对于Node.js的模块机制大都着墨不多。在后续介绍模块的使用之前，我认为有必要深入一下Node.js的模块机制。</p>
 <h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><p>早在Netscape诞生不久后，JavaScript就一直在探索本地编程的路，Rhino是其代表产物。无奈那时服务端JavaScript走的路均是参考众多服务器端语言来实现的，在这样的背景之下，一没有特色，二没有实用价值。但是随着JavaScript在前端的应用越来越广泛，以及服务端JavaScript的推动，JavaScript现有的规范十分薄弱，不利于JavaScript大规模的应用。那些以JavaScript为宿主语言的环境中，只有本身的基础原生对象和类型，更多的对象和API都取决于宿主的提供，所以，我们可以看到JavaScript缺少这些功能：</p>
 <ul>
 <li>JavaScript没有模块系统。没有原生的支持密闭作用域或依赖管理。</li>
@@ -615,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#模块机制"><span class="nav-number">1.</span> <span class="nav-text">模块机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js模块的实现"><span class="nav-number">1.1.</span> <span class="nav-text">Node.js模块的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">1.2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单模块定义和使用"><span class="nav-number">1.3.</span> <span class="nav-text">简单模块定义和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块载入策略"><span class="nav-number">1.4.</span> <span class="nav-text">模块载入策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require方法中的文件查找策略"><span class="nav-number">1.5.</span> <span class="nav-text">require方法中的文件查找策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从文件模块缓存中加载"><span class="nav-number">1.6.</span> <span class="nav-text">从文件模块缓存中加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从原生模块加载"><span class="nav-number">1.7.</span> <span class="nav-text">从原生模块加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从文件加载"><span class="nav-number">1.8.</span> <span class="nav-text">从文件加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包结构"><span class="nav-number">1.9.</span> <span class="nav-text">包结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js模块与前端模块的异同"><span class="nav-number">1.10.</span> <span class="nav-text">Node.js模块与前端模块的异同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.11.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js模块的实现"><span class="nav-number">1.</span> <span class="nav-text">Node.js模块的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonJS规范"><span class="nav-number">2.</span> <span class="nav-text">CommonJS规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单模块定义和使用"><span class="nav-number">3.</span> <span class="nav-text">简单模块定义和使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块载入策略"><span class="nav-number">4.</span> <span class="nav-text">模块载入策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require方法中的文件查找策略"><span class="nav-number">5.</span> <span class="nav-text">require方法中的文件查找策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从文件模块缓存中加载"><span class="nav-number">6.</span> <span class="nav-text">从文件模块缓存中加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从原生模块加载"><span class="nav-number">7.</span> <span class="nav-text">从原生模块加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从文件加载"><span class="nav-number">8.</span> <span class="nav-text">从文件加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包结构"><span class="nav-number">9.</span> <span class="nav-text">包结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js模块与前端模块的异同"><span class="nav-number">10.</span> <span class="nav-text">Node.js模块与前端模块的异同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">11.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
