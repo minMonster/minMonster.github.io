@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="测试、产品化">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJs 读书笔记 第10章、第11章">
+<meta property="og:url" content="http://yoursite.com/2018/08/06/NodeJs 读书笔记 第10章、第11章/index.html">
+<meta property="og:site_name" content="Bling">
+<meta property="og:description" content="测试、产品化">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-05T16:15:06.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJs 读书笔记 第10章、第11章">
+<meta name="twitter:description" content="测试、产品化">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/06/NodeJs 读书笔记 第10章、第11章/"/>
+
+
+
+
+
+  <title>NodeJs 读书笔记 第10章、第11章 | Bling</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Monster's bling</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/06/NodeJs 读书笔记 第10章、第11章/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Monster">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NodeJs 读书笔记 第10章、第11章</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T00:09:35+08:00">
+                2018-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  测试、产品化
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>我们知道后端都有单元测试，比如学习Java用到的Junit，很好用，那么前端有没有单元测试呢？答案当然是有的。这里就简单总结一下前端单元测试的内容和一些常用的测试框架。</p>
+<h2 id="单元测试编写原则："><a href="#单元测试编写原则：" class="headerlink" title="单元测试编写原则："></a>单元测试编写原则：</h2><p>我们都知道做单元测试可以有很多好处，但是在了解单元测试之前，先来看一下单元测试的编写规则，在编写可测试的代码需要注意以下3个问题：</p>
+<ul>
+<li>单一职责： 尽量细分代码的职责，不要给一段代码附加太多而逻辑从而使代码变得不可控。</li>
+<li>接口抽象： 对于大的项目，业务逻辑比较复杂，要记得写接口，针对接口进行测试。</li>
+<li>层次分离： MVC就是最好的例子。</li>
+</ul>
+<h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>单元测试的核心应用就是断言，用一个最简单的例子介绍一下什么是断言：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>)</span><br><span class="line">assert.equal(<span class="built_in">Math</span>.max(<span class="number">1</span>, <span class="number">100</span>), <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<p>equal()是断言模块的内置方法，用于判断实际值与期望值是否相等。类似的方法还有ok()、notEqual()等。上句代码的意思是判断 Math.max(1, 100) 的输出结果是不是100，如果不是，就抛出异常。</p>
+<h2 id="测试框架"><a href="#测试框架" class="headerlink" title="测试框架"></a>测试框架</h2><p>单元测试很简单，下面介绍两个常用的单元测试库，jasmine 和 mocha</p>
+<h2 id="jasmine"><a href="#jasmine" class="headerlink" title="jasmine"></a>jasmine</h2><p>Jasmine的开发团队来自PivotalLabs，他们一开始开发的JavaScript测试框架是JsUnit，来源于著名的JAVA测试框架JUnit。JsUnit是xUnit的JavaScript实现。但是JsUnit在2009年后就已经停止维护了，他们推出了一个新的BDD框架Jasmine。Jasmine不依赖于任何框架，所以适用于所有的Javascript代码。</p>
+<p>下面直接放一个官方的使用案例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">"A spec"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> foo;</span><br><span class="line"></span><br><span class="line">  beforeEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo = <span class="number">0</span>;</span><br><span class="line">    foo += <span class="number">1</span>;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  afterEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    foo = <span class="number">0</span>;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">"is just a function, so it can contain any code"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    expect(foo).toEqual(<span class="number">1</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  it(<span class="string">"can have more than one expectation"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    expect(foo).toEqual(<span class="number">1</span>);</span><br><span class="line">    expect(<span class="literal">true</span>).toEqual(<span class="literal">true</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  describe(<span class="string">"nested inside a second describe"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bar;</span><br><span class="line"></span><br><span class="line">    beforeEach(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      bar = <span class="number">1</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(<span class="string">"can reference both scopes as needed"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      expect(foo).toEqual(bar);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>jasmine单元测试有二个核心的部分：describe 函数块和it函数块</p>
+<p>describe和it函数都有二个参数： </p>
+<ul>
+<li>第一个参数：测试描述； </li>
+<li>第二个参数：测试用的具体逻辑</li>
+</ul>
+<h2 id="mocha"><a href="#mocha" class="headerlink" title="mocha"></a>mocha</h2><p>mocha的使用和jasmine类似，这里也直接放一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</span><br><span class="line">describe(<span class="string">'Array'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  describe(<span class="string">'#indexOf()'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">'should return -1 when the value is not present'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      assert.equal(<span class="number">-1</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].indexOf(<span class="number">4</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>describe块称为”测试套件”（test suite），表示一组相关的测试。它是一个函数，第一个参数是测试套件的名称（随便起，能让别人看懂就好），第二个参数是一个实际执行的函数。 </p>
+<p>it块称为”测试用例”（test case），表示一个单独的测试，是测试的最小单位。它也是一个函数，第一个参数是测试用例的名称（随便起，能让别人看懂就好），第二个参数是一个实际执行的函数。</p>
+<p>这里只简单介绍，具体使用可以看阮一峰的mocha实例教程： <a href="http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html</a></p>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><p>性能测试主要包括基准测试、压力测试、和负载测试：</p>
+<h2 id="基准测试："><a href="#基准测试：" class="headerlink" title="基准测试："></a>基准测试：</h2><p>基准测试的目的是统计在多少时间内执行了多少方法。</p>
+<h2 id="压力测试："><a href="#压力测试：" class="headerlink" title="压力测试："></a>压力测试：</h2><p>压力测试就是模拟请求测试网络接口，查看吞吐率，响应时间和并发数。常用的工具是ab、siege、http_load,使用很简单，直接看文档就可以使用，这里不多赘述</p>
+<h2 id="负载测试："><a href="#负载测试：" class="headerlink" title="负载测试："></a>负载测试：</h2><p>负载测试和压力测试很像，主要是测试数据在超负荷环境中运行，程序是否能够承担。</p>
+<h1 id="产品化"><a href="#产品化" class="headerlink" title="产品化"></a>产品化</h1><p>产品化的内容很简单，重点在于实践和工程化中的运用。主要包括以下：</p>
+<h2 id="项目工程化"><a href="#项目工程化" class="headerlink" title="项目工程化"></a>项目工程化</h2><p>目前现有的一些项目工程管理，不如webpack，gulp等，用起来都很方便。</p>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>以下是几个常见的提升性能的方法：</p>
+<h2 id="动静分离："><a href="#动静分离：" class="headerlink" title="动静分离："></a>动静分离：</h2><p>动态请求和静态请求分离开来</p>
+<h2 id="启用缓存："><a href="#启用缓存：" class="headerlink" title="启用缓存："></a>启用缓存：</h2><p>适当利用缓存，但是不可以过分利用缓存</p>
+<h2 id="多线程架构："><a href="#多线程架构：" class="headerlink" title="多线程架构："></a>多线程架构：</h2><p>具体可以参照第九章的笔记</p>
+<h2 id="读写分离："><a href="#读写分离：" class="headerlink" title="读写分离："></a>读写分离：</h2><p>主要针对数据库，因为读写操作速度是不一样的，读的速度是高于写入的速度的，所以对于不同的业务，可以对数据库做读写分离处理，具体可以查看博客：<a href="https://my.oschina.net/candiesyangyang/blog/203425" target="_blank" rel="noopener">https://my.oschina.net/candiesyangyang/blog/203425</a></p>
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p>对于程序来说，写日志是十分重要的，对于异常日志的捕捉都是对日后程序维护的利器，一般情况推荐把日志存为文件，不推荐存入数据库。</p>
+<h2 id="监控报警"><a href="#监控报警" class="headerlink" title="监控报警"></a>监控报警</h2><p>所谓监控主要包括对 日志监控、响应时间、进程监控、磁盘监控、内存监控、CPU占用监控、CPU load监控、I/O负载、网络监控、应用状态监控、DNS监控。报警一般都是通过短信或者邮件来执行。</p>
+<h2 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h2><p>为保证应用的稳定性，可以采用多机器、多机房、多备份的方式来保证。</p>
+<h2 id="异构共存"><a href="#异构共存" class="headerlink" title="异构共存"></a>异构共存</h2><p>主要是指与其他语言的兼容性，协同作为。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/29/NodeJs-读书笔记-第9章/" rel="next" title="NodeJs-读书笔记-第9章">
+                <i class="fa fa-chevron-left"></i> NodeJs-读书笔记-第9章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Monster</p>
+              <p class="site-description motion-element" itemprop="description">Daily summary</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单元测试"><span class="nav-number">1.</span> <span class="nav-text">单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试编写原则："><span class="nav-number">1.1.</span> <span class="nav-text">单元测试编写原则：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#断言"><span class="nav-number">1.2.</span> <span class="nav-text">断言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试框架"><span class="nav-number">1.3.</span> <span class="nav-text">测试框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jasmine"><span class="nav-number">1.4.</span> <span class="nav-text">jasmine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mocha"><span class="nav-number">1.5.</span> <span class="nav-text">mocha</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">1.6.</span> <span class="nav-text">性能测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基准测试："><span class="nav-number">1.7.</span> <span class="nav-text">基准测试：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压力测试："><span class="nav-number">1.8.</span> <span class="nav-text">压力测试：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载测试："><span class="nav-number">1.9.</span> <span class="nav-text">负载测试：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产品化"><span class="nav-number">2.</span> <span class="nav-text">产品化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目工程化"><span class="nav-number">2.1.</span> <span class="nav-text">项目工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-number">2.2.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动静分离："><span class="nav-number">2.3.</span> <span class="nav-text">动静分离：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启用缓存："><span class="nav-number">2.4.</span> <span class="nav-text">启用缓存：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程架构："><span class="nav-number">2.5.</span> <span class="nav-text">多线程架构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读写分离："><span class="nav-number">2.6.</span> <span class="nav-text">读写分离：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志"><span class="nav-number">2.7.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控报警"><span class="nav-number">2.8.</span> <span class="nav-text">监控报警</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稳定性"><span class="nav-number">2.9.</span> <span class="nav-text">稳定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异构共存"><span class="nav-number">2.10.</span> <span class="nav-text">异构共存</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monster</span>
+
+  
+</div>
+
+
+  <div class="powered-by">开源改变世界</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
