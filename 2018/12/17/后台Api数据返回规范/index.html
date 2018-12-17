@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="后台," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="后台Api数据返回规范.md">
+<meta name="keywords" content="后台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后台Api数据返回规范">
+<meta property="og:url" content="http://yoursite.com/2018/12/17/后台Api数据返回规范/index.html">
+<meta property="og:site_name" content="Bling">
+<meta property="og:description" content="后台Api数据返回规范.md">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/tfl/captures/2018-06/tapd_21177101_base64_1529562968_14.png">
+<meta property="og:updated_time" content="2018-12-17T07:11:31.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="后台Api数据返回规范">
+<meta name="twitter:description" content="后台Api数据返回规范.md">
+<meta name="twitter:image" content="http://yoursite.com/tfl/captures/2018-06/tapd_21177101_base64_1529562968_14.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/17/后台Api数据返回规范/"/>
+
+
+
+
+
+  <title>后台Api数据返回规范 | Bling</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Monster's bling</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/后台Api数据返回规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Monster">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">后台Api数据返回规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T18:00:00+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后台/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  后台Api数据返回规范.md
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="返回码"><a href="#返回码" class="headerlink" title="返回码"></a>返回码</h1><p>一般以 http response status code 作为返回码，参考 <a href="https://tools.ietf.org/html/rfc7231" target="_blank" rel="noopener">rfc7231</a></p>
+<h3 id="请求成功"><a href="#请求成功" class="headerlink" title="请求成功"></a>请求成功</h3><ul>
+<li>200 OK：请求成功</li>
+<li>201 CREATED：成功处理请求，并且有新的资源被创建</li>
+<li>202 Accepted：表示一个请求已经进入后台排队（异步任务）</li>
+<li>204 NO CONTENT：成功处理请求，但没有任何数据返回</li>
+</ul>
+<h3 id="请求失败"><a href="#请求失败" class="headerlink" title="请求失败"></a>请求失败</h3><ul>
+<li>400 INVALID REQUEST：用户发出的请求有错误，服务器没有进行处理</li>
+<li>401 Unauthorized：表示用户没有权限（令牌、用户名、密码错误）</li>
+<li>403 Forbidden：表示用户得到授权（与401错误相对），但是访问是被禁止的</li>
+<li>404 NOT FOUND：找不到资源，因为资源不存在和路由不存在会有二义性，所以如果是资源不存在，我们当成业务逻辑错误来处理。比如用户不存在，会返回 499，并且会返回一个 error json object</li>
+<li>422 Unprocesable Entity：请求的参数发生一个验证错误</li>
+<li>499 业务逻辑错误，说明见下面</li>
+<li>500 INTERNAL SERVER ERROR：服务器发生错误，用户将无法判断发出的请求是否成功<h4 id="请求失败返回的数据格式"><a href="#请求失败返回的数据格式" class="headerlink" title="请求失败返回的数据格式"></a>请求失败返回的数据格式</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"手机 不存在。"</span>,</span><br><span class="line">    <span class="attr">"status_code"</span>: <span class="number">422</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="业务逻辑错误"><a href="#业务逻辑错误" class="headerlink" title="业务逻辑错误"></a>业务逻辑错误</h3><p><strong>如果是业务逻辑错误，http response status code 会返回 499，同时会有一个 error json object 返回</strong><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"error"</span>: &#123;</span><br><span class="line">        <span class="attr">"code"</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">"user_message"</span>: <span class="string">"暂未开放账号注册"</span>,</span><br><span class="line">        <span class="attr">"internal_message"</span>: <span class="string">"暂未开放账号注册"</span>,</span><br><span class="line">        <span class="attr">"more_info"</span>: <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>code: 不同的场景返回不同的值，客户端可根据这个值做不同的业务逻辑处理<br>user_message: 显示给用户看的错误信息（一般可以弹一个 toast），为空字符串时，不显示</p>
+<p><strong>特殊情况：如果给阿里云 OSS 的回调返回 4xx 错误时，阿里云会给客户端返回错误，客户端拿不到 error 信息。所以阿里云 OSS 的回调需要特殊处理，后台会返回 299 。</strong></p>
+<h1 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h1><h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>比如获取医生详情<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"hospital"</span>: <span class="string">"速眠睡眠中心"</span>,</span><br><span class="line">    <span class="attr">"department"</span>: <span class="string">"睡眠科"</span>,</span><br><span class="line">    <span class="attr">"title"</span>: <span class="string">"主任医师"</span>,</span><br><span class="line">    <span class="attr">"qr_code_raw"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"introduction"</span>: <span class="string">"速眠睡眠中心主任医生。主要临床专业特长： 各种精神与心理障碍诊疗，尤其是难治性焦虑、抑郁和睡眠障碍的临床诊断和药物治疗。"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"速眠医生"</span>,</span><br><span class="line">    <span class="attr">"avatar"</span>: <span class="string">"https://sleep-doctor.oss-cn-shenzhen.aliyuncs.com/doctors/avatar/1/93cb9585-fcf3-4888-aed8-678d3a873232.jpg"</span>,</span><br><span class="line">    <span class="attr">"introduction_no_tag"</span>: <span class="string">"速眠睡眠中心主任医生。主要临床专业特长： 各种精神与心理障碍诊疗，尤其是难治性焦虑、抑郁和睡眠障碍的临床诊断和药物治疗。"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="分页列表"><a href="#分页列表" class="headerlink" title="分页列表"></a>分页列表</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"data"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="string">"8c50ea3a-265c-4d64-b181-03659ffe78e6"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"App\\Notifications\\ScaleDistribution"</span>,</span><br><span class="line">            <span class="attr">"read_at"</span>: <span class="number">1527638152</span>,</span><br><span class="line">            <span class="attr">"created_at"</span>: <span class="number">1527603221</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"id"</span>: <span class="string">"38cfa914-78e0-447a-be19-da5f03d5aa56"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"App\\Notifications\\ScaleDistribution"</span>,</span><br><span class="line">            <span class="attr">"read_at"</span>: <span class="number">1527638148</span>,</span><br><span class="line">            <span class="attr">"created_at"</span>: <span class="number">1527603114</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"meta"</span>: &#123;</span><br><span class="line">        <span class="attr">"pagination"</span>: &#123;</span><br><span class="line">            <span class="attr">"total"</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">"count"</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">"per_page"</span>: <span class="number">15</span>,</span><br><span class="line">            <span class="attr">"current_page"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"total_pages"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"links"</span>: &#123;</span><br><span class="line">                <span class="attr">"previous"</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">"next"</span>: <span class="literal">null</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>data: 数据列表，数组类型<br>meta: 元信息<br>meta.pagination 分页信息<br>meta.pagination.total 总数量<br>meta.pagination.count 当前页数量<br>meta.pagination.per_page 每页数量<br>meta.pagination.current_page 当前页码<br>meta.pagination.total_pages 总页数<br>meta.pagination.links 链接<br>meta.pagination.links.next 下一页的链接</p>
+<h1 id="include-使用说明"><a href="#include-使用说明" class="headerlink" title="include 使用说明"></a>include 使用说明</h1><p>如果 api 文档有写可以使用 include 参数，如下：</p>
+<p><img src="/tfl/captures/2018-06/tapd_21177101_base64_1529562968_14.png" alt="图片描述"></p>
+<p>则可以根据需要来设置 include 的值。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="advisories-26"><a href="#advisories-26" class="headerlink" title="/advisories/26"></a>/advisories/26</h3><p><strong>只有 advisory 的数据</strong><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">26</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">"package_id"</span>: <span class="number">13</span>,</span><br><span class="line">    <span class="attr">"order_id"</span>: <span class="number">191</span>,</span><br><span class="line">    <span class="attr">"user_id"</span>: <span class="number">2002</span>,</span><br><span class="line">    <span class="attr">"doctor_id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"start_at"</span>: <span class="number">1526526520</span>,</span><br><span class="line">    <span class="attr">"end_at"</span>: <span class="number">1526612920</span>,</span><br><span class="line">    <span class="attr">"created_at"</span>: <span class="number">1526526501</span>,</span><br><span class="line">    <span class="attr">"updated_at"</span>: <span class="number">1526612920</span>,</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"咯过哦了也在咯做最住\r\n莫咯咯哦了也扣我\r\n李金龙\r\n来PK困咯\r\nKKK女弄\r\n萝莉控\r\n你咯搜狗"</span>,</span><br><span class="line">    <span class="attr">"service_id"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">"remind_description"</span>: <span class="string">"服务已关闭，款项会退回原账户"</span>,</span><br><span class="line">    <span class="attr">"last_count"</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="advisories-26-include-user"><a href="#advisories-26-include-user" class="headerlink" title="/advisories/26?include=user"></a>/advisories/26?include=user</h3><p><strong>有 advisory 和 user 的数据</strong><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">26</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">"package_id"</span>: <span class="number">13</span>,</span><br><span class="line">    <span class="attr">"order_id"</span>: <span class="number">191</span>,</span><br><span class="line">    <span class="attr">"user_id"</span>: <span class="number">2002</span>,</span><br><span class="line">    <span class="attr">"doctor_id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"start_at"</span>: <span class="number">1526526520</span>,</span><br><span class="line">    <span class="attr">"end_at"</span>: <span class="number">1526612920</span>,</span><br><span class="line">    <span class="attr">"created_at"</span>: <span class="number">1526526501</span>,</span><br><span class="line">    <span class="attr">"updated_at"</span>: <span class="number">1526612920</span>,</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"咯过哦了也在咯做最住\r\n莫咯咯哦了也扣我\r\n李金龙\r\n来PK困咯\r\nKKK女弄\r\n萝莉控\r\n你咯搜狗"</span>,</span><br><span class="line">    <span class="attr">"service_id"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">"remind_description"</span>: <span class="string">"服务已关闭，款项会退回原账户"</span>,</span><br><span class="line">    <span class="attr">"last_count"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"user"</span>: &#123;</span><br><span class="line">        <span class="attr">"id"</span>: <span class="number">2002</span>,</span><br><span class="line">        <span class="attr">"mobile"</span>: <span class="string">"15118132143"</span>,</span><br><span class="line">        <span class="attr">"nickname"</span>: <span class="string">"LDL"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"李德林"</span>,</span><br><span class="line">        <span class="attr">"avatar"</span>: <span class="string">"https://sleep-doctor.oss-cn-shenzhen.aliyuncs.com/avatar/3/8277ef5a-d0f7-4467-85d5-acb37574cbe2.jpg"</span>,</span><br><span class="line">        <span class="attr">"area"</span>: <span class="string">"未设置"</span>,</span><br><span class="line">        <span class="attr">"monitor_sn"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"sleeper_sn"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"career"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"created_at"</span>: <span class="number">1517829357</span>,</span><br><span class="line">        <span class="attr">"updated_at"</span>: <span class="number">1528094307</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="advisories-26-include-user-doctor"><a href="#advisories-26-include-user-doctor" class="headerlink" title="/advisories/26?include=user,doctor"></a>/advisories/26?include=user,doctor</h3><p><strong>有 advisory，user 和 doctor 的数据</strong><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="number">26</span>,</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">"package_id"</span>: <span class="number">13</span>,</span><br><span class="line">    <span class="attr">"order_id"</span>: <span class="number">191</span>,</span><br><span class="line">    <span class="attr">"user_id"</span>: <span class="number">2002</span>,</span><br><span class="line">    <span class="attr">"doctor_id"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"start_at"</span>: <span class="number">1526526520</span>,</span><br><span class="line">    <span class="attr">"end_at"</span>: <span class="number">1526612920</span>,</span><br><span class="line">    <span class="attr">"created_at"</span>: <span class="number">1526526501</span>,</span><br><span class="line">    <span class="attr">"updated_at"</span>: <span class="number">1526612920</span>,</span><br><span class="line">    <span class="attr">"description"</span>: <span class="string">"咯过哦了也在咯做最住\r\n莫咯咯哦了也扣我\r\n李金龙\r\n来PK困咯\r\nKKK女弄\r\n萝莉控\r\n你咯搜狗"</span>,</span><br><span class="line">    <span class="attr">"service_id"</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="attr">"remind_description"</span>: <span class="string">"服务已关闭，款项会退回原账户"</span>,</span><br><span class="line">    <span class="attr">"last_count"</span>: <span class="number">2</span>,</span><br><span class="line">    <span class="attr">"user"</span>: &#123;</span><br><span class="line">        <span class="attr">"id"</span>: <span class="number">2002</span>,</span><br><span class="line">        <span class="attr">"mobile"</span>: <span class="string">"15118132143"</span>,</span><br><span class="line">        <span class="attr">"nickname"</span>: <span class="string">"LDL"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"李德林"</span>,</span><br><span class="line">        <span class="attr">"avatar"</span>: <span class="string">"https://sleep-doctor.oss-cn-shenzhen.aliyuncs.com/avatar/3/8277ef5a-d0f7-4467-85d5-acb37574cbe2.jpg"</span>,</span><br><span class="line">        <span class="attr">"area"</span>: <span class="string">"未设置"</span>,</span><br><span class="line">        <span class="attr">"monitor_sn"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"sleeper_sn"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"career"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"created_at"</span>: <span class="number">1517829357</span>,</span><br><span class="line">        <span class="attr">"updated_at"</span>: <span class="number">1528094307</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"doctor"</span>: &#123;</span><br><span class="line">        <span class="attr">"id"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"hospital"</span>: <span class="string">"速眠睡眠中心"</span>,</span><br><span class="line">        <span class="attr">"department"</span>: <span class="string">"睡眠科"</span>,</span><br><span class="line">        <span class="attr">"title"</span>: <span class="string">"主任医师"</span>,</span><br><span class="line">        <span class="attr">"qr_code_raw"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"introduction"</span>: <span class="string">"速眠睡眠中心主任医生。主要临床专业特长： 各种精神与心理障碍诊疗，尤其是难治性焦虑、抑郁和睡眠障碍的临床诊断和药物治疗。"</span>,</span><br><span class="line">        <span class="attr">"name"</span>: <span class="string">"速眠医生"</span>,</span><br><span class="line">        <span class="attr">"avatar"</span>: <span class="string">"https://sleep-doctor.oss-cn-shenzhen.aliyuncs.com/doctors/avatar/1/93cb9585-fcf3-4888-aed8-678d3a873232.jpg"</span>,</span><br><span class="line">        <span class="attr">"introduction_no_tag"</span>: <span class="string">"速眠睡眠中心主任医生。主要临床专业特长： 各种精神与心理障碍诊疗，尤其是难治性焦虑、抑郁和睡眠障碍的临床诊断和药物治疗。"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="token-自动刷新机制"><a href="#token-自动刷新机制" class="headerlink" title="token 自动刷新机制"></a>token 自动刷新机制</h1><p>token 如果已经过期，但在可刷新有效期内，服务器会自动生成一个新的 token，并且在当前请求的 response header 返回，<br>格式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Bearer &#123;newToken&#125;</span><br></pre></td></tr></table></figure></p>
+<p>客户端要检查每个请求的 response header 是否有 Authorization，如果有，要把 {newToken} 保存下来并用新的 token 来请求。<br>重新生成 token 后，旧 token 还可以用 60 秒，所以客户端不用处理并发的问题。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/后台/" rel="tag"># 后台</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/17/commit代码规范/" rel="next" title="commit代码规范">
+                <i class="fa fa-chevron-left"></i> commit代码规范
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Monster</p>
+              <p class="site-description motion-element" itemprop="description">Daily summary</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#返回码"><span class="nav-number">1.</span> <span class="nav-text">返回码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求成功"><span class="nav-number">1.0.1.</span> <span class="nav-text">请求成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求失败"><span class="nav-number">1.0.2.</span> <span class="nav-text">请求失败</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#请求失败返回的数据格式"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">请求失败返回的数据格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#业务逻辑错误"><span class="nav-number">1.0.3.</span> <span class="nav-text">业务逻辑错误</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据格式"><span class="nav-number">2.</span> <span class="nav-text">数据格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">2.1.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分页列表"><span class="nav-number">2.2.</span> <span class="nav-text">分页列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include-使用说明"><span class="nav-number">3.</span> <span class="nav-text">include 使用说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">3.1.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#advisories-26"><span class="nav-number">3.1.1.</span> <span class="nav-text">/advisories/26</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#advisories-26-include-user"><span class="nav-number">3.1.2.</span> <span class="nav-text">/advisories/26?include=user</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#advisories-26-include-user-doctor"><span class="nav-number">3.1.3.</span> <span class="nav-text">/advisories/26?include=user,doctor</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#token-自动刷新机制"><span class="nav-number">4.</span> <span class="nav-text">token 自动刷新机制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monster</span>
+
+  
+</div>
+
+
+  <div class="powered-by">开源改变世界</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
