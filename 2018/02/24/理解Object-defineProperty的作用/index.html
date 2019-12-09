@@ -83,14 +83,12 @@
 <meta name="keywords" content="javaScript,JS-Object">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解Object.defineProperty的作用">
-<meta property="og:url" content="http://yoursite.com/2018/02/24/理解Object-defineProperty的作用/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;02&#x2F;24&#x2F;%E7%90%86%E8%A7%A3Object-defineProperty%E7%9A%84%E4%BD%9C%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="Bling">
 <meta property="og:description" content="理解Object.defineProperty的作用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-30T04:42:37.607Z">
+<meta property="og:updated_time" content="2018-04-30T04:42:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理解Object.defineProperty的作用">
-<meta name="twitter:description" content="理解Object.defineProperty的作用">
 
 
 
@@ -200,16 +198,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -243,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/理解Object-defineProperty的作用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/24/%E7%90%86%E8%A7%A3Object-defineProperty%E7%9A%84%E4%BD%9C%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Monster">
@@ -348,6 +336,8 @@ obj.say = function(){};  //添加行为
 <hr>
 <blockquote>
 <p>Object.defineProperty()<br>语法：</p>
+</blockquote>
+<blockquote>
 <p>Object.defineProperty(obj, prop, descriptor)<br>参数说明：</p>
 </blockquote>
 <ul>
@@ -555,9 +545,17 @@ for( var attr in obj ){
 }
 </code></pre><h2 id="设置的特性总结："><a href="#设置的特性总结：" class="headerlink" title="设置的特性总结："></a>设置的特性总结：</h2><blockquote>
 <p>value: 设置属性的值</p>
+</blockquote>
+<blockquote>
 <p>writable: 值是否可以重写。true | false</p>
+</blockquote>
+<blockquote>
 <p>enumerable: 目标属性是否可以被枚举。true | false</p>
+</blockquote>
+<blockquote>
 <p>configurable: 目标属性是否可以被删除或是否可以再次修改特性 true | &gt; false</p>
+</blockquote>
+<blockquote>
 <p>存取器描述<br>当使用存取器描述属性的特性的时候，允许设置以下特性属性：</p>
 </blockquote>
 <pre><code>var obj = {};
@@ -623,7 +621,7 @@ console.log( obj.newKey ); //change value
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/24/URL网址解析的好帮手/" rel="next" title="URL网址解析的好帮手">
+              <a href="/2018/02/24/URL%E7%BD%91%E5%9D%80%E8%A7%A3%E6%9E%90%E7%9A%84%E5%A5%BD%E5%B8%AE%E6%89%8B/" rel="next" title="URL网址解析的好帮手">
                 <i class="fa fa-chevron-left"></i> URL网址解析的好帮手
               </a>
             
@@ -633,7 +631,7 @@ console.log( obj.newKey ); //change value
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/02/24/WebStrom-快捷键/" rel="prev" title="WebStrom 快捷键">
+              <a href="/2018/02/24/WebStrom-%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="prev" title="WebStrom 快捷键">
                 WebStrom 快捷键 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -710,9 +708,9 @@ console.log( obj.newKey ); //change value
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -723,7 +721,7 @@ console.log( obj.newKey ); //change value
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -734,7 +732,7 @@ console.log( obj.newKey ); //change value
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

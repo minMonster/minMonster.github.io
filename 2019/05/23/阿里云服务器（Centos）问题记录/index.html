@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="问题总结," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="阿里云服务器（Centos）部署 node 服务，问题记录">
+<meta name="keywords" content="问题总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云服务器（Centos）部署 node 服务，问题记录">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;23&#x2F;%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88Centos%EF%BC%89%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95&#x2F;index.html">
+<meta property="og:site_name" content="Bling">
+<meta property="og:description" content="阿里云服务器（Centos）部署 node 服务，问题记录">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-14T06:09:07.597Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/阿里云服务器（Centos）问题记录/"/>
+
+
+
+
+
+  <title>阿里云服务器（Centos）部署 node 服务，问题记录 | Bling</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Bling</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Monster's bling</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88Centos%EF%BC%89%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Monster">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bling">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">阿里云服务器（Centos）部署 node 服务，问题记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T11:13:46+08:00">
+                2019-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  阿里云服务器（Centos）部署 node 服务，问题记录
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近手里有一个官网展示项目，本地开发还算顺利，阿里云服务器部署遇到了一些问题</p>
+<h3 id="用node启动server后，发现服务器不稳定，经常crash。我是用ssh远程登录的，ssh远程通道中断，或者Ctrl-C-都会使nodejs-server崩溃掉。"><a href="#用node启动server后，发现服务器不稳定，经常crash。我是用ssh远程登录的，ssh远程通道中断，或者Ctrl-C-都会使nodejs-server崩溃掉。" class="headerlink" title="用node启动server后，发现服务器不稳定，经常crash。我是用ssh远程登录的，ssh远程通道中断，或者Ctrl+C,都会使nodejs server崩溃掉。"></a>用node启动server后，发现服务器不稳定，经常crash。我是用ssh远程登录的，ssh远程通道中断，或者Ctrl+C,都会使nodejs server崩溃掉。</h3><p>使用 nohup 来启动项目（不是最优解决方案）<br>用途：不挂断地运行命令（也就是后台运营node程序）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup yarn start &amp;</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用-nohup-启动服务解决了-断开-shh-服务中断这个问题"><a href="#使用-nohup-启动服务解决了-断开-shh-服务中断这个问题" class="headerlink" title="使用 nohup 启动服务解决了 断开 shh 服务中断这个问题"></a>使用 nohup 启动服务解决了 断开 shh 服务中断这个问题</h4><p>但是不能保证 node 服务因为意外的报错中断服务 下文给出了解决方案</p>
+<h3 id="node-是单线程阻塞-io-，意味着有可能服务遇到报错直接停止服务器"><a href="#node-是单线程阻塞-io-，意味着有可能服务遇到报错直接停止服务器" class="headerlink" title="node 是单线程阻塞 io ，意味着有可能服务遇到报错直接停止服务器"></a>node 是单线程阻塞 io ，意味着有可能服务遇到报错直接停止服务器</h3><p>单线程的某处产生了“未处理的”异常确实会导致整个Node.JS的崩溃退出，来看个例子, 这里有一个node-error.js的文件： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(＇http＇);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//这里有个错误，params 是 undefined</span></span><br><span class="line">  <span class="keyword">var</span> ok = req.params.ok;</span><br><span class="line"></span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123;＇Content-Type＇: ＇text/plain＇&#125;);</span><br><span class="line">  res.end(＇Hello World</span><br><span class="line">＇);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>, ＇<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>＇);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(＇Server running at http:<span class="comment">//127.0.0.1:8080/＇);</span></span><br></pre></td></tr></table></figure>
+<p>启动服务，并在地址栏测试一下发现 <a href="http://127.0.0.1:8080/" target="_blank" rel="noopener">http://127.0.0.1:8080/</a>  不出所料，node崩溃了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ node node-error</span><br><span class="line">Server running at http://127.0.0.1:8080/</span><br><span class="line"></span><br><span class="line">c:githubscript</span><br><span class="line">ode-error.js:5</span><br><span class="line">  var ok = req.params.ok;</span><br><span class="line">                     ^</span><br><span class="line">TypeError: Cannot <span class="built_in">read</span> property ＇ok＇ of undefined</span><br><span class="line">    at Server.&lt;anonymous&gt; (c:githubscript</span><br><span class="line">ode-error.js:5:22)</span><br><span class="line">    at Server.EventEmitter.emit (events.js:98:17)</span><br><span class="line">    at HTTPParser.parser.onIncoming (http.js:2108:12)</span><br><span class="line">    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:121:23)</span><br><span class="line">    at Socket.socket.ondata (http.js:1966:22)</span><br><span class="line">    at TCP.onread (net.js:525:27)</span><br></pre></td></tr></table></figure><br><a href="https://blog.csdn.net/xiunai78/article/details/40378965/" target="_blank" rel="noopener">原文</a>有写怎么在逻辑层处理报错<br>这种情况当然不是我们愿意看到的，怎么保持服务的稳定性呢？</p>
+<h4 id="使用-pm2-来守护进程-保证服务-不会因为某一个错误，导致全线崩溃"><a href="#使用-pm2-来守护进程-保证服务-不会因为某一个错误，导致全线崩溃" class="headerlink" title="使用 pm2 来守护进程 保证服务 不会因为某一个错误，导致全线崩溃"></a>使用 pm2 来守护进程 保证服务 不会因为某一个错误，导致全线崩溃</h4><p>pm2 简介</p>
+<ul>
+<li>PM2是node进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，如性能监控、自动重启、负载均衡等，而且使用非常简单。<br>pm2 安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+入门教程<br>使用我们当前的 koa2 项目来举例。一般我们都是使用 yarn start 来启动应用 实际上 是使用 node bin/www 来启动项目<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">   "start": "node bin/www",</span><br><span class="line">   "dev": "./node_modules/.bin/nodemon bin/www",</span><br><span class="line">   "prd": "pm2 start bin/www",</span><br><span class="line">   "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+注意，这里用了–watch参数，意味着当你的koa2应用代码发生变化时，pm2会帮你重启服务，多贴心。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start ./bin/www --watch</span><br></pre></td></tr></table></figure>
+入门太简单了，没什么好讲的。直接上<a href="http://pm2.keymetrics.io/docs/usage/quick-start" target="_blank" rel="noopener">官方文档</a></li>
+</ul>
+<p>详细使用教程 参考 <a href="https://blog.csdn.net/maquealone/article/details/79550120" target="_blank" rel="noopener">PM2实用入门指南</a></p>
+<p>我们服务启动了，我们通过 nginx 反向代理 将服务代理到 9010 端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen  9010;</span><br><span class="line">        server_name 47.***.***.72;</span><br><span class="line">	    root 47.***.***.72;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://127.0.0.1:3000;</span><br><span class="line">                proxy_http_version 1.1;</span><br><span class="line">                proxy_set_header   Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">                proxy_set_header   Connection keep-alive;</span><br><span class="line">                proxy_set_header   Host <span class="variable">$http_host</span>;</span><br><span class="line">                proxy_cache_bypass <span class="variable">$http_upgrade</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="服务启动了但是通过-ip-端口号不能访问"><a href="#服务启动了但是通过-ip-端口号不能访问" class="headerlink" title="服务启动了但是通过 ip + 端口号不能访问"></a>服务启动了但是通过 ip + 端口号不能访问</h3><p>但是我发现 通过服务器 ip 端口号访问 并不通 why？？？？</p>
+<p>思考了一下列举出了以下可能的问题</p>
+<h4 id="首先验证服务是否是正常的"><a href="#首先验证服务是否是正常的" class="headerlink" title="首先验证服务是否是正常的"></a>首先验证服务是否是正常的</h4><p>我们通过 ssh 进入服务器<br>然后查看 进程是否还在</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pm2 list</span><br><span class="line">┌──────┬────┬──────┬─────────┬────┬──────┬───────────┐</span><br><span class="line">│ Name │ id │ mode │ status  │ ↺  │ cpu  │ memory    │</span><br><span class="line">├──────┼────┼──────┼─────────┼────┼──────┼───────────┤</span><br><span class="line">│ app  │ 1  │ fork │ stopped │ 0  │ 0%   │ 0 B       │</span><br><span class="line">│ node │ 2  │ fork │ online  │ 0  │ 0%   │ 17.3 MB   │</span><br><span class="line">│ www  │ 3  │ fork │ online  │ 0  │ 0.2% │ 80.4 MB   │</span><br><span class="line">│ yarn │ 0  │ fork │ stopped │ 75 │ 0%   │ 0 B       │</span><br><span class="line">└──────┴────┴──────┴─────────┴────┴──────┴───────────┘</span><br></pre></td></tr></table></figure>
+<p>我们看到服务正在正常的跑着</p>
+<h4 id="端口号是否是通的"><a href="#端口号是否是通的" class="headerlink" title="端口号是否是通的"></a>端口号是否是通的</h4><p>查看 80 默认端口是否通</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen  8080;</span><br><span class="line">        server_name 47.***.***.72;</span><br><span class="line">	    root 47.***.***.72;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://127.0.0.1:3000;</span><br><span class="line">                proxy_http_version 1.1;</span><br><span class="line">                proxy_set_header   Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">                proxy_set_header   Connection keep-alive;</span><br><span class="line">                proxy_set_header   Host <span class="variable">$http_host</span>;</span><br><span class="line">                proxy_cache_bypass <span class="variable">$http_upgrade</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>将 node 服务代理到 80端口</p>
+<p>发现通过 ip 直接访问是通的</p>
+<p>这时候就可以得出结论</p>
+<ul>
+<li>服务是没有问题的</li>
+<li>9010 端口可能不通</li>
+</ul>
+<p>但是为什么80端口是通的9010是不通的？<br>通过百度大法，以及多方打听列举处两个有可能的点</p>
+<ul>
+<li><p>阿里云安全组端口权限</p>
+</li>
+<li><p>centos 防火墙端口是否开启</p>
+</li>
+</ul>
+<h3 id="Centos-防火墙-开放端口"><a href="#Centos-防火墙-开放端口" class="headerlink" title="Centos 防火墙 开放端口"></a>Centos 防火墙 开放端口</h3><p>使用 systemd 来管理 firewalld<br>systemd 是 Linux 下的一款系统和服务管理器，兼容 SysV 和 LSB 的启动脚本。systemd 的特性有：支持并行化任务；同一时候採用 socket 式与 D-Bus 总线式激活服务；按需启动守护进程（daemon）。利用 Linux 的 cgroups 监视进程；支持快照和系统恢复。维护挂载点和自己主动挂载点。各服务间基于依赖关系进行精密控制。<br>1、firewalld的基本使用<br>启动： systemctl start firewalld<br>关闭： systemctl stop firewalld<br>查看状态： systemctl status firewalld<br>开机禁用  ： systemctl disable firewalld<br>开机启用  ： systemctl enable firewalld</p>
+<p>2.systemctl是CentOS7的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。<br>启动一个服务：systemctl start firewalld.service<br>关闭一个服务：systemctl stop firewalld.service<br>重启一个服务：systemctl restart firewalld.service<br>显示一个服务的状态：systemctl status firewalld.service<br>在开机时启用一个服务：systemctl enable firewalld.service<br>在开机时禁用一个服务：systemctl disable firewalld.service<br>查看服务是否开机启动：systemctl is-enabled firewalld.service<br>查看已启动的服务列表：systemctl list-unit-files|grep enabled<br>查看启动失败的服务列表：systemctl –failed</p>
+<p>3.配置firewalld-cmd</p>
+<p>查看版本： firewall-cmd –version<br>查看帮助： firewall-cmd –help<br>显示状态： firewall-cmd –state<br>查看所有打开的端口： firewall-cmd –zone=public –list-ports<br>更新防火墙规则： firewall-cmd –reload<br>查看区域信息:  firewall-cmd –get-active-zones<br>查看指定接口所属区域： firewall-cmd –get-zone-of-interface=eth0<br>拒绝所有包：firewall-cmd –panic-on<br>取消拒绝状态： firewall-cmd –panic-off<br>查看是否拒绝： firewall-cmd –query-panic</p>
+<p>那怎么开启一个端口呢<br>添加<br>firewall-cmd –zone=public –add-port=80/tcp –permanent    （–permanent永久生效，没有此参数重启后失效）<br>重新载入<br>firewall-cmd –reload<br>查看<br>firewall-cmd –zone= public –query-port=80/tcp<br>删除<br>firewall-cmd –zone= public –remove-port=80/tcp –permanent</p>
+<h3 id="阿里云开放安全组"><a href="#阿里云开放安全组" class="headerlink" title="阿里云开放安全组"></a>阿里云开放安全组</h3><p>废话少说直接上阿里云文档 <a href="https://helpcdn.aliyun.com/document_detail/25471.html" target="_blank" rel="noopener">添加安全组规则</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag"># 问题总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="面向对象">
+                <i class="fa fa-chevron-left"></i> 面向对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/23/%E4%BD%A0%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8D%B8%E8%BD%BD%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E5%92%8C%E6%8A%96%E9%9F%B3%EF%BC%9F/" rel="prev" title="你为什么卸载今日头条和抖音？（转载自知乎）">
+                你为什么卸载今日头条和抖音？（转载自知乎） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Monster</p>
+              <p class="site-description motion-element" itemprop="description">Daily summary</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用node启动server后，发现服务器不稳定，经常crash。我是用ssh远程登录的，ssh远程通道中断，或者Ctrl-C-都会使nodejs-server崩溃掉。"><span class="nav-number">1.</span> <span class="nav-text">用node启动server后，发现服务器不稳定，经常crash。我是用ssh远程登录的，ssh远程通道中断，或者Ctrl+C,都会使nodejs server崩溃掉。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-nohup-启动服务解决了-断开-shh-服务中断这个问题"><span class="nav-number">1.1.</span> <span class="nav-text">使用 nohup 启动服务解决了 断开 shh 服务中断这个问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-是单线程阻塞-io-，意味着有可能服务遇到报错直接停止服务器"><span class="nav-number">2.</span> <span class="nav-text">node 是单线程阻塞 io ，意味着有可能服务遇到报错直接停止服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-pm2-来守护进程-保证服务-不会因为某一个错误，导致全线崩溃"><span class="nav-number">2.1.</span> <span class="nav-text">使用 pm2 来守护进程 保证服务 不会因为某一个错误，导致全线崩溃</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务启动了但是通过-ip-端口号不能访问"><span class="nav-number">3.</span> <span class="nav-text">服务启动了但是通过 ip + 端口号不能访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先验证服务是否是正常的"><span class="nav-number">3.1.</span> <span class="nav-text">首先验证服务是否是正常的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口号是否是通的"><span class="nav-number">3.2.</span> <span class="nav-text">端口号是否是通的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Centos-防火墙-开放端口"><span class="nav-number">4.</span> <span class="nav-text">Centos 防火墙 开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里云开放安全组"><span class="nav-number">5.</span> <span class="nav-text">阿里云开放安全组</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monster</span>
+
+  
+</div>
+
+
+  <div class="powered-by">开源改变世界</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
