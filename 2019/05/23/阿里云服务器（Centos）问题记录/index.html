@@ -6,10 +6,10 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="问题总结," />
+  <meta name="keywords" content="问题总结,">
 
 
 
@@ -83,12 +83,14 @@
 <meta name="keywords" content="问题总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云服务器（Centos）部署 node 服务，问题记录">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;05&#x2F;23&#x2F;%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88Centos%EF%BC%89%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/阿里云服务器（Centos）问题记录/index.html">
 <meta property="og:site_name" content="Bling">
 <meta property="og:description" content="阿里云服务器（Centos）部署 node 服务，问题记录">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-14T06:09:07.597Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云服务器（Centos）部署 node 服务，问题记录">
+<meta name="twitter:description" content="阿里云服务器（Centos）部署 node 服务，问题记录">
 
 
 
@@ -118,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/23/阿里云服务器（Centos）问题记录/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/阿里云服务器（Centos）问题记录/">
 
 
 
@@ -152,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Bling</span>
         <span class="logo-line-after"><i></i></span>
@@ -182,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -190,9 +192,9 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-about"></i> <br>
             
             关于
           </a>
@@ -231,11 +233,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%88Centos%EF%BC%89%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/阿里云服务器（Centos）问题记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Monster">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -271,7 +273,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -329,14 +331,16 @@
 <h4 id="使用-nohup-启动服务解决了-断开-shh-服务中断这个问题"><a href="#使用-nohup-启动服务解决了-断开-shh-服务中断这个问题" class="headerlink" title="使用 nohup 启动服务解决了 断开 shh 服务中断这个问题"></a>使用 nohup 启动服务解决了 断开 shh 服务中断这个问题</h4><p>但是不能保证 node 服务因为意外的报错中断服务 下文给出了解决方案</p>
 <h3 id="node-是单线程阻塞-io-，意味着有可能服务遇到报错直接停止服务器"><a href="#node-是单线程阻塞-io-，意味着有可能服务遇到报错直接停止服务器" class="headerlink" title="node 是单线程阻塞 io ，意味着有可能服务遇到报错直接停止服务器"></a>node 是单线程阻塞 io ，意味着有可能服务遇到报错直接停止服务器</h3><p>单线程的某处产生了“未处理的”异常确实会导致整个Node.JS的崩溃退出，来看个例子, 这里有一个node-error.js的文件： </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(＇http＇);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//这里有个错误，params 是 undefined</span></span><br><span class="line">  <span class="keyword">var</span> ok = req.params.ok;</span><br><span class="line"></span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123;＇Content-Type＇: ＇text/plain＇&#125;);</span><br><span class="line">  res.end(＇Hello World</span><br><span class="line">＇);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>, ＇<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>＇);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(＇Server running at http:<span class="comment">//127.0.0.1:8080/＇);</span></span><br></pre></td></tr></table></figure>
-<p>启动服务，并在地址栏测试一下发现 <a href="http://127.0.0.1:8080/" target="_blank" rel="noopener">http://127.0.0.1:8080/</a>  不出所料，node崩溃了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ node node-error</span><br><span class="line">Server running at http://127.0.0.1:8080/</span><br><span class="line"></span><br><span class="line">c:githubscript</span><br><span class="line">ode-error.js:5</span><br><span class="line">  var ok = req.params.ok;</span><br><span class="line">                     ^</span><br><span class="line">TypeError: Cannot <span class="built_in">read</span> property ＇ok＇ of undefined</span><br><span class="line">    at Server.&lt;anonymous&gt; (c:githubscript</span><br><span class="line">ode-error.js:5:22)</span><br><span class="line">    at Server.EventEmitter.emit (events.js:98:17)</span><br><span class="line">    at HTTPParser.parser.onIncoming (http.js:2108:12)</span><br><span class="line">    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:121:23)</span><br><span class="line">    at Socket.socket.ondata (http.js:1966:22)</span><br><span class="line">    at TCP.onread (net.js:525:27)</span><br></pre></td></tr></table></figure><br><a href="https://blog.csdn.net/xiunai78/article/details/40378965/" target="_blank" rel="noopener">原文</a>有写怎么在逻辑层处理报错<br>这种情况当然不是我们愿意看到的，怎么保持服务的稳定性呢？</p>
+<p>启动服务，并在地址栏测试一下发现 <a href="http://127.0.0.1:8080/" target="_blank" rel="noopener">http://127.0.0.1:8080/</a>  不出所料，node崩溃了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ node node-error</span><br><span class="line">Server running at http://127.0.0.1:8080/</span><br><span class="line"></span><br><span class="line">c:githubscript</span><br><span class="line">ode-error.js:5</span><br><span class="line">  var ok = req.params.ok;</span><br><span class="line">                     ^</span><br><span class="line">TypeError: Cannot <span class="built_in">read</span> property ＇ok＇ of undefined</span><br><span class="line">    at Server.&lt;anonymous&gt; (c:githubscript</span><br><span class="line">ode-error.js:5:22)</span><br><span class="line">    at Server.EventEmitter.emit (events.js:98:17)</span><br><span class="line">    at HTTPParser.parser.onIncoming (http.js:2108:12)</span><br><span class="line">    at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:121:23)</span><br><span class="line">    at Socket.socket.ondata (http.js:1966:22)</span><br><span class="line">    at TCP.onread (net.js:525:27)</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/xiunai78/article/details/40378965/" target="_blank" rel="noopener">原文</a>有写怎么在逻辑层处理报错<br>这种情况当然不是我们愿意看到的，怎么保持服务的稳定性呢？</p>
 <h4 id="使用-pm2-来守护进程-保证服务-不会因为某一个错误，导致全线崩溃"><a href="#使用-pm2-来守护进程-保证服务-不会因为某一个错误，导致全线崩溃" class="headerlink" title="使用 pm2 来守护进程 保证服务 不会因为某一个错误，导致全线崩溃"></a>使用 pm2 来守护进程 保证服务 不会因为某一个错误，导致全线崩溃</h4><p>pm2 简介</p>
 <ul>
 <li>PM2是node进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，如性能监控、自动重启、负载均衡等，而且使用非常简单。<br>pm2 安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
-入门教程<br>使用我们当前的 koa2 项目来举例。一般我们都是使用 yarn start 来启动应用 实际上 是使用 node bin/www 来启动项目<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">   "start": "node bin/www",</span><br><span class="line">   "dev": "./node_modules/.bin/nodemon bin/www",</span><br><span class="line">   "prd": "pm2 start bin/www",</span><br><span class="line">   "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-注意，这里用了–watch参数，意味着当你的koa2应用代码发生变化时，pm2会帮你重启服务，多贴心。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start ./bin/www --watch</span><br></pre></td></tr></table></figure>
-入门太简单了，没什么好讲的。直接上<a href="http://pm2.keymetrics.io/docs/usage/quick-start" target="_blank" rel="noopener">官方文档</a></li>
+</li>
 </ul>
+<p>入门教程<br>使用我们当前的 koa2 项目来举例。一般我们都是使用 yarn start 来启动应用 实际上 是使用 node bin/www 来启动项目<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">   "start": "node bin/www",</span><br><span class="line">   "dev": "./node_modules/.bin/nodemon bin/www",</span><br><span class="line">   "prd": "pm2 start bin/www",</span><br><span class="line">   "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意，这里用了–watch参数，意味着当你的koa2应用代码发生变化时，pm2会帮你重启服务，多贴心。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start ./bin/www --watch</span><br></pre></td></tr></table></figure></p>
+<p>入门太简单了，没什么好讲的。直接上<a href="http://pm2.keymetrics.io/docs/usage/quick-start" target="_blank" rel="noopener">官方文档</a></p>
 <p>详细使用教程 参考 <a href="https://blog.csdn.net/maquealone/article/details/79550120" target="_blank" rel="noopener">PM2实用入门指南</a></p>
 <p>我们服务启动了，我们通过 nginx 反向代理 将服务代理到 9010 端口</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen  9010;</span><br><span class="line">        server_name 47.***.***.72;</span><br><span class="line">	    root 47.***.***.72;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://127.0.0.1:3000;</span><br><span class="line">                proxy_http_version 1.1;</span><br><span class="line">                proxy_set_header   Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">                proxy_set_header   Connection keep-alive;</span><br><span class="line">                proxy_set_header   Host <span class="variable">$http_host</span>;</span><br><span class="line">                proxy_cache_bypass <span class="variable">$http_upgrade</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
@@ -384,7 +388,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" rel="tag"># 问题总结</a>
+            <a href="/tags/问题总结/" rel="tag"># 问题总结</a>
           
         </div>
       
@@ -397,7 +401,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="面向对象">
+              <a href="/2019/01/13/面向对象/" rel="next" title="面向对象">
                 <i class="fa fa-chevron-left"></i> 面向对象
               </a>
             
@@ -407,7 +411,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/23/%E4%BD%A0%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8D%B8%E8%BD%BD%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E5%92%8C%E6%8A%96%E9%9F%B3%EF%BC%9F/" rel="prev" title="你为什么卸载今日头条和抖音？（转载自知乎）">
+              <a href="/2019/05/23/你为什么卸载今日头条和抖音？/" rel="prev" title="你为什么卸载今日头条和抖音？（转载自知乎）">
                 你为什么卸载今日头条和抖音？（转载自知乎） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -486,7 +490,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -561,7 +565,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

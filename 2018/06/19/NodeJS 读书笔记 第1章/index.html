@@ -6,10 +6,10 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NodeJS," />
+  <meta name="keywords" content="NodeJS,">
 
 
 
@@ -83,12 +83,14 @@
 <meta name="keywords" content="NodeJS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJS 读书笔记 第1章">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;06&#x2F;19&#x2F;NodeJS%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%20%E7%AC%AC1%E7%AB%A0&#x2F;index.html">
+<meta property="og:url" content="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/index.html">
 <meta property="og:site_name" content="Bling">
 <meta property="og:description" content="NodeJS">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-06-20T15:35:58.000Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJS 读书笔记 第1章">
+<meta name="twitter:description" content="NodeJS">
 
 
 
@@ -118,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/">
 
 
 
@@ -152,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Bling</span>
         <span class="logo-line-after"><i></i></span>
@@ -182,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -190,9 +192,9 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-about"></i> <br>
             
             关于
           </a>
@@ -231,11 +233,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/NodeJS%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%20%E7%AC%AC1%E7%AB%A0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/NodeJS 读书笔记 第1章/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Monster">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -271,7 +273,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -327,7 +329,7 @@
         <h1 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h1><p>在Node中，异步I/O很常见。以读取文件为例。我们可以看到它与前端Ajax调用的方式是极其类似的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件完成'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'发起读取文件'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发起读取文件</span></span><br><span class="line"><span class="comment">// 读取文件完成</span></span><br></pre></td></tr></table></figure>
 <p>这里’发起读取文件’，是在读取文件完成之前执行的，这就是一个典型的异步。</p>
-<p>在Node中，绝大多数的操作都以异步的方式进行调用。<a href="https://cn.linkedin.com/in/ryandahl01" target="_blank" rel="noopener" title="Ryan dahl">Ryan dahl</a>排除万难，在底层构建了很多异步I/O的API，<br>从文件读取到网络请求等，均是如此。这样做的意义是我们可以很自然的从语言层面进行并行I/O操作。每个调用之间<br>无需等待之前的I/O调用结束。在编程模型上可以极大提升效率。</p>
+<p>在Node中，绝大多数的操作都以异步的方式进行调用。<a href="https://cn.linkedin.com/in/ryandahl01" title="Ryan dahl" target="_blank" rel="noopener">Ryan dahl</a>排除万难，在底层构建了很多异步I/O的API，<br>从文件读取到网络请求等，均是如此。这样做的意义是我们可以很自然的从语言层面进行并行I/O操作。每个调用之间<br>无需等待之前的I/O调用结束。在编程模型上可以极大提升效率。</p>
 <p>下面的两个文件读取任务的耗时取决于最慢的那个文件读取耗时。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件1完成'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'/path'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'读取文件2完成'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>而同步I/O这两个文件的耗时是两个任务耗时之和。</p>
@@ -446,7 +448,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/23/NodeJS%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%20%E7%AC%AC2%E7%AB%A0/" rel="prev" title="NodeJS 读书笔记 第2章">
+              <a href="/2018/06/23/NodeJS 读书笔记 第2章/" rel="prev" title="NodeJS 读书笔记 第2章">
                 NodeJS 读书笔记 第2章 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -525,7 +527,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -600,7 +602,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
